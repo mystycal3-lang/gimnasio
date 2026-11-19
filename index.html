@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0f17">
+<title>IRON NORTE | Gimnasio, Fuerza y Funcional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f17;
+  --bg-2:#121824;
+  --card:#161e2e;
+  --ink:#f8fafc;
+  --muted:#94a3b8;
+  --line:rgba(248,250,252,.12);
+  --lime:#a3e635;
+  --lime-2:#bef264;
+  --dark:#0b0f17;
+  --shadow:0 20px 50px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  margin:0;
+  font-family:"Plus Jakarta Sans",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+}
+button,input,select{font:inherit}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+.container{width:min(1140px,calc(100% - 36px));margin:auto}
+
+.ribbon{
+  background:#06080c;
+  color:#cbd5e1;
+  text-align:center;
+  padding:8px 14px;
+  font-size:11px;
+  letter-spacing:.06em;
+  border-bottom:1px solid rgba(163,230,53,.22);
+}
+.ribbon strong{color:var(--lime-2)}
+
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(11,15,23,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:72px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-box{
+  width:40px;height:40px;border-radius:6px;
+  background:var(--lime);color:var(--dark);
+  display:grid;place-items:center;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:800;font-size:22px;letter-spacing:.04em;
+}
+.brand-name{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:800;font-size:22px;letter-spacing:.08em;line-height:1;
+}
+.brand-sub{font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+.nav-links{display:flex;align-items:center;gap:24px;font-size:13px;color:#cbd5e1}
+.nav-links a:hover{color:var(--lime-2)}
+.nav-cta{
+  padding:9px 15px;border-radius:6px;
+  background:var(--lime);color:var(--dark)!important;font-weight:700;
+}
+.nav-cta:hover{background:var(--lime-2)}
+
+.menu-btn{
+  display:none;background:none;border:1px solid var(--line);
+  color:var(--ink);width:44px;height:44px;border-radius:6px;
+  font-size:22px;cursor:pointer;
+}
+
+.hero{
+  padding:82px 0 74px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(163,230,53,.16), transparent 45%),
+    linear-gradient(180deg, rgba(11,15,23,.68) 0%, rgba(11,15,23,.97) 100%),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80") center/cover;
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:38px;align-items:center}
+.kicker{
+  font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--lime);margin-bottom:12px;
+}
+.hero h1{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:clamp(48px,7vw,82px);
+  line-height:.98;font-weight:800;text-transform:uppercase;
+  margin:0 0 18px;letter-spacing:.01em;
+}
+.hero h1 span{color:var(--lime)}
+.hero p{color:#cbd5e1;font-size:15.5px;max-width:540px;margin:0 0 26px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 20px;border-radius:6px;border:1px solid transparent;
+  background:var(--lime);color:var(--dark);
+  font-weight:700;font-size:12.5px;letter-spacing:.05em;
+  text-transform:uppercase;cursor:pointer;transition:.18s ease;
+}
+.btn:hover{background:var(--lime-2);transform:translateY(-1px)}
+.btn-outline{
+  background:transparent;border-color:rgba(248,250,252,.32);color:var(--ink);
+}
+.btn-outline:hover{border-color:var(--lime-2);color:var(--lime-2);background:rgba(163,230,53,.08)}
+.btn-sm{padding:9px 14px;font-size:11.5px}
+
+.hero-panel{
+  background:var(--bg-2);border:1px solid var(--line);
+  border-radius:10px;padding:24px;box-shadow:var(--shadow);
+}
+.hero-panel h2{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:28px;text-transform:uppercase;margin:0 0 6px;color:var(--lime-2);
+}
+.hero-panel p{font-size:13px;color:var(--muted);margin:0 0 16px}
+.stats-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.stat-box{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:8px;padding:12px 8px;
+}
+.stat-box strong{
+  display:block;font-family:"Barlow Condensed",sans-serif;
+  font-size:26px;color:var(--lime);line-height:1.1;
+}
+.stat-box span{font-size:11px;color:var(--muted)}
+
+section{padding:76px 0}
+.section-alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;flex-wrap:wrap;margin-bottom:32px;
+}
+.sec-head h2{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:clamp(36px,5vw,52px);
+  line-height:1.02;text-transform:uppercase;margin:4px 0 0;
+}
+.sec-head p{max-width:420px;color:var(--muted);font-size:14px;margin:0}
+
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan-card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:24px;display:flex;flex-direction:column;
+  justify-content:space-between;gap:20px;
+}
+.plan-card.featured{border-color:var(--lime);box-shadow:0 0 0 1px rgba(163,230,53,.25)}
+.plan-tag{
+  display:inline-block;font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:6px;
+}
+.plan-card h3{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:28px;text-transform:uppercase;margin:0 0 8px;
+}
+.plan-price{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:40px;font-weight:800;color:var(--lime-2);line-height:1;
+}
+.plan-price span{font-size:14px;font-family:"Plus Jakarta Sans",sans-serif;color:var(--muted);font-weight:500}
+.plan-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;font-size:13.5px;color:#cbd5e1}
+.plan-list li::before{content:"✓ ";color:var(--lime);font-weight:700}
+
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.chip{
+  padding:8px 15px;border-radius:999px;
+  border:1px solid var(--line);background:transparent;
+  color:#cbd5e1;font-size:12.5px;font-weight:600;cursor:pointer;
+}
+.chip.active,.chip:hover{background:var(--lime);color:var(--dark);border-color:var(--lime)}
+
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.class-card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:8px;padding:20px;
+}
+.class-meta{
+  display:flex;justify-content:space-between;gap:10px;
+  font-size:11.5px;color:var(--lime);font-weight:700;text-transform:uppercase;
+}
+.class-card h3{margin:8px 0 6px;font-size:18px}
+.class-card p{margin:0 0 12px;color:var(--muted);font-size:13.5px}
+.class-time{font-size:12.5px;color:#cbd5e1;padding-top:10px;border-top:1px solid var(--line)}
+
+.join-box{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:26px;box-shadow:var(--shadow);
+}
+.join-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
+.field label{
+  display:block;font-size:11px;text-transform:uppercase;
+  letter-spacing:.12em;color:#cbd5e1;font-weight:700;margin-bottom:7px;
+}
+.field select,.field input{
+  width:100%;height:44px;border-radius:6px;
+  border:1px solid rgba(248,250,252,.18);
+  background:var(--bg);color:var(--ink);padding:0 12px;outline:none;
+}
+.field select:focus,.field input:focus{border-color:var(--lime)}
+
+.summary-bar{
+  margin-top:18px;padding:14px 18px;
+  background:rgba(163,230,53,.08);
+  border:1px solid rgba(163,230,53,.28);
+  border-radius:8px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;font-size:13.5px;
+}
+.summary-bar strong{color:var(--lime-2)}
+
+footer{
+  padding:32px 0;background:#06080c;
+  border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);
+}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.74);
+  display:none;align-items:center;justify-content:center;
+  padding:18px;z-index:40;
+}
+.modal-bg.open{display:flex}
+.modal-card{
+  background:var(--card);border:1px solid rgba(163,230,53,.35);
+  border-radius:10px;width:min(480px,100%);padding:24px;
+  box-shadow:var(--shadow);position:relative;
+}
+.modal-x{
+  position:absolute;top:14px;right:14px;
+  background:none;border:1px solid var(--line);color:var(--ink);
+  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;
+}
+.msg-box{
+  background:var(--bg);border:1px solid var(--line);
+  border-radius:6px;padding:14px;margin:14px 0;
+  font-size:13px;color:#e2e8f0;white-space:pre-line;
+}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .plans-grid,.classes-grid{grid-template-columns:repeat(2,1fr)}
+  .join-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:var(--bg-2);border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:stretch;padding:18px;gap:14px;
+  }
+  .nav-links.open{display:flex}
+  .plans-grid,.classes-grid,.join-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="ribbon"><strong>DEMOSTRACIÓN</strong> · Proyecto de portfolio (planes y horarios ilustrativos).</div>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="brand">
+      <div class="brand-box">IN</div>
+      <div>
+        <div class="brand-name">IRON NORTE</div>
+        <div class="brand-sub">Fuerza · Funcional · Sala</div>
+      </div>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#planes">Planes</a>
+      <a href="#clases">Clases</a>
+      <a href="#inscripcion">Empezar</a>
+      <a href="#inscripcion" class="nav-cta">Clase de prueba</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker">Entrenamiento constante · Sin vueltas</div>
+        <h1>Entrená fuerte y <span>sostené el ritmo</span>.</h1>
+        <p>Elegí tu plan mensual, revisá las clases de la semana y armá tu consulta o pase de prueba en un toque.</p>
+        <div class="actions">
+          <a href="#planes" class="btn">VER PLANES ↗</a>
+          <a href="#inscripcion" class="btn btn-outline">PEDIR PASE DE PRUEBA</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>Ritmo del club</h2>
+        <p>Abierto de lunes a sábado con turnos y sala libre.</p>
+        <div class="stats-mini">
+          <div class="stat-box"><strong>06:30</strong><span>Apertura</span></div>
+          <div class="stat-box"><strong>18+</strong><span>Clases / sem</span></div>
+          <div class="stat-box"><strong>100%</strong><span>Acompañamiento</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="planes">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Membresías</div>
+          <h2>Planes mensuales</h2>
+        </div>
+        <p>Opciones claras según los días que entrenes por semana. Tocá «Elegir plan» para simular tu consulta.</p>
+      </div>
+
+      <div class="plans-grid">
+        <article class="plan-card">
+          <div>
+            <span class="plan-tag">3 días por semana</span>
+            <h3>Base</h3>
+            <div class="plan-price">$ 34.000 <span>/ mes</span></div>
+            <ul class="plan-list">
+              <li>Acceso 3 veces por semana a sala o clases</li>
+              <li>Rutina inicial de adaptación</li>
+              <li>Control de progreso mensual</li>
+            </ul>
+          </div>
+          <button class="btn btn-outline pick-plan" data-plan="Base ($ 34.000/mes)" type="button">ELEGIR PLAN BASE</button>
+        </article>
+
+        <article class="plan-card featured">
+          <div>
+            <span class="plan-tag">Más elegido · Libre</span>
+            <h3>Pase Libre</h3>
+            <div class="plan-price">$ 44.000 <span>/ mes</span></div>
+            <ul class="plan-list">
+              <li>Acceso ilimitado de lunes a sábado</li>
+              <li>Musculación + funcional + movilidad</li>
+              <li>Ajuste de rutina cada 4 semanas</li>
+            </ul>
+          </div>
+          <button class="btn pick-plan" data-plan="Pase Libre ($ 44.000/mes)" type="button">ELEGIR PASE LIBRE</button>
+        </article>
+
+        <article class="plan-card">
+          <div>
+            <span class="plan-tag">Con seguimiento cercano</span>
+            <h3>Full + Coach</h3>
+            <div class="plan-price">$ 58.000 <span>/ mes</span></div>
+            <ul class="plan-list">
+              <li>Pase libre a todas las actividades</li>
+              <li>Planificación personalizada por objetivo</li>
+              <li>Revisión quincenal con entrenador</li>
+            </ul>
+          </div>
+          <button class="btn btn-outline pick-plan" data-plan="Full + Coach ($ 58.000/mes)" type="button">ELEGIR FULL + COACH</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" id="clases">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Grilla semanal</div>
+          <h2>Actividades y clases</h2>
+        </div>
+        <p>Filtrá por modalidad para ver enfoque y horarios habituales.</p>
+      </div>
+
+      <div class="filter-row" id="classFilters">
+        <button class="chip active" data-type="Todas" type="button">Todas</button>
+        <button class="chip" data-type="Fuerza" type="button">Fuerza</button>
+        <button class="chip" data-type="Funcional" type="button">Funcional</button>
+        <button class="chip" data-type="Movilidad" type="button">Movilidad</button>
+      </div>
+
+      <div class="classes-grid" id="classesGrid"></div>
+    </div>
+  </section>
+
+  <section id="inscripcion">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="kicker">Empezá hoy</div>
+          <h2>Consultá por tu plan o prueba</h2>
+        </div>
+        <p>Completá los datos básicos para generar el mensaje listo para enviar.</p>
+      </div>
+
+      <div class="join-box">
+        <form class="join-grid" id="joinForm">
+          <div class="field">
+            <label for="planSelect">Plan de interés</label>
+            <select id="planSelect">
+              <option value="Base ($ 34.000/mes)">Base ($ 34.000/mes)</option>
+              <option value="Pase Libre ($ 44.000/mes)" selected>Pase Libre ($ 44.000/mes)</option>
+              <option value="Full + Coach ($ 58.000/mes)">Full + Coach ($ 58.000/mes)</option>
+              <option value="Clase de prueba">Clase de prueba</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="goalSelect">Objetivo principal</label>
+            <select id="goalSelect">
+              <option value="Ganar fuerza y músculo">Ganar fuerza y músculo</option>
+              <option value="Acondicionamiento y cardio">Acondicionamiento y cardio</option>
+              <option value="Moverme y ganar constancia">Moverme y ganar constancia</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="shiftSelect">Turno preferido</label>
+            <select id="shiftSelect">
+              <option value="Mañana (07:00 - 12:00)">Mañana (07:00 - 12:00)</option>
+              <option value="Siesta / Mediodía (12:00 - 16:00)">Siesta / Mediodía (12:00 - 16:00)</option>
+              <option value="Tarde / Noche (16:00 - 21:30)">Tarde / Noche (16:00 - 21:30)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="memberName">Tu nombre</label>
+            <input id="memberName" type="text" placeholder="Ej: Sofía" maxlength="60">
+          </div>
+        </form>
+
+        <div class="summary-bar">
+          <div id="joinSummary">Seleccionado: <strong>Pase Libre ($ 44.000/mes)</strong></div>
+          <button class="btn" id="sendJoinBtn" type="button">PREPARAR CONSULTA ↗</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot-inner">
+    <div><strong>IRON NORTE</strong> · Demo de gimnasio (datos ilustrativos).</div>
+    <div>Archivo estático listo para GitHub Pages.</div>
+  </div>
+</footer>
+
+<div class="modal-bg" id="joinModal" role="dialog" aria-modal="true" aria-labelledby="joinModalTitle">
+  <div class="modal-card">
+    <button class="modal-x" id="closeJoinModal" aria-label="Cerrar">×</button>
+    <div class="kicker" style="margin-bottom:4px">Mensaje listo</div>
+    <h3 id="joinModalTitle" style="margin:0 0 6px;font-size:22px">Consulta de membresía</h3>
+    <p style="margin:0;font-size:13px;color:var(--muted)">Copiá el texto o abrilo en WhatsApp.</p>
+    <div class="msg-box" id="joinMsgBox"></div>
+    <div class="actions">
+      <button class="btn btn-sm" id="copyJoinBtn" type="button">COPIAR MENSAJE</button>
+      <a class="btn btn-outline btn-sm" id="waJoinLink" target="_blank" rel="noopener">ABRIR WHATSAPP ↗</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = ""; // Ej: "54911XXXXXXXX"
+
+const classesList = [
+  { type: "Fuerza", title: "Fuerza & Básicos", level: "Todos los niveles", desc: "Trabajo progresivo de empujes, tirones y piernas con técnica cuidada.", time: "Lun · Mié · Vie · 08:30 y 18:00" },
+  { type: "Funcional", title: "Circuito Funcional", level: "Intensidad adaptable", desc: "Circuitos dinámicos para resistencia, potencia y coordinación general.", time: "Mar · Jue · 09:30 y 19:00" },
+  { type: "Movilidad", title: "Movilidad & Core", level: "Recuperación activa", desc: "Control postural, estabilidad de zona media y rango articular.", time: "Mié · Sáb · 10:30" },
+  { type: "Fuerza", title: "Hipertrofia Sala", level: "Intermedio / Avanzado", desc: "Enfoque en volumen, control excéntrico y registro de cargas.", time: "Lun a Vie · 17:00 y 20:00" },
+  { type: "Funcional", title: "MetCon Express", level: "45 minutos", desc: "Sesión corta y ágil enfocada en ritmo cardíaco y trabajo en equipo.", time: "Mar · Jue · 07:30 y 18:00" },
+  { type: "Movilidad", title: "Stretch & Reset", level: "Todo público", desc: "Liberación muscular y respiración para cerrar la semana entrenando.", time: "Sáb · 11:30" }
+];
+
+const classesGrid = document.getElementById("classesGrid");
+const planSelect = document.getElementById("planSelect");
+const joinSummary = document.getElementById("joinSummary");
+const joinModal = document.getElementById("joinModal");
+const joinMsgBox = document.getElementById("joinMsgBox");
+const waJoinLink = document.getElementById("waJoinLink");
+
+function renderClasses(filterType = "Todas") {
+  const items = filterType === "Todas" ? classesList : classesList.filter(c => c.type === filterType);
+  classesGrid.innerHTML = items.map(c => `
+    <article class="class-card">
+      <div class="class-meta"><span>${c.type}</span><span>${c.level}</span></div>
+      <h3>${c.title}</h3>
+      <p>${c.desc}</p>
+      <div class="class-time">${c.time}</div>
+    </article>
+  `).join("");
+}
+
+function refreshJoinSummary() {
+  joinSummary.innerHTML = `Seleccionado: <strong>${planSelect.value}</strong>`;
+}
+
+document.getElementById("classFilters").addEventListener("click", e => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  document.querySelectorAll("#classFilters .chip").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderClasses(btn.dataset.type);
+});
+
+document.querySelectorAll(".pick-plan").forEach(btn => {
+  btn.addEventListener("click", () => {
+    planSelect.value = btn.dataset.plan;
+    refreshJoinSummary();
+    document.getElementById("inscripcion").scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+planSelect.addEventListener("change", refreshJoinSummary);
+
+document.getElementById("sendJoinBtn").addEventListener("click", () => {
+  const name = document.getElementById("memberName").value.trim() || "Interesado/a";
+  const goal = document.getElementById("goalSelect").value;
+  const shift = document.getElementById("shiftSelect").value;
+  const msg =
+    `Hola IRON NORTE, soy ${name}. Quiero consultar por:
+` +
+    `• Opción: ${planSelect.value}
+` +
+    `• Objetivo: ${goal}
+` +
+    `• Turno: ${shift}`;
+
+  joinMsgBox.textContent = msg;
+  const num = WHATSAPP_NUMBER.replace(/\D/g, "");
+  waJoinLink.href = num
+    ? `https://wa.me/${num}?text=${encodeURIComponent(msg)}`
+    : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  joinModal.classList.add("open");
+});
+
+document.getElementById("closeJoinModal").addEventListener("click", () => joinModal.classList.remove("open"));
+joinModal.addEventListener("click", e => { if (e.target === joinModal) joinModal.classList.remove("open"); });
+
+document.getElementById("copyJoinBtn").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(joinMsgBox.textContent);
+    document.getElementById("copyJoinBtn").textContent = "¡COPIADO!";
+    setTimeout(() => { document.getElementById("copyJoinBtn").textContent = "COPIAR MENSAJE"; }, 1800);
+  } catch (e) {}
+});
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+menuBtn.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+});
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  navLinks.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded", "false");
+}));
+
+renderClasses();
+refreshJoinSummary();
+</script>
+</body>
+</html>
